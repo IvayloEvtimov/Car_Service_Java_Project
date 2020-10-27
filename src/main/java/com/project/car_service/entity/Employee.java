@@ -31,6 +31,6 @@ public class Employee {
 	private Set<Garage> garageSet;
 
 	@OneToMany(mappedBy = "employee")
-	private Set<Service> services;
+	private Set<CarWork> carWorks;
 
 }

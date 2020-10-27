@@ -21,5 +21,5 @@ public class CarPart {
 	private String partName;
 
 	@OneToMany(mappedBy = "carPart")
-	private Set<Service> services;
+	private Set<CarWork> carWorks;
 }

@@ -24,6 +24,6 @@ public class Client {
 	private Set<Car> carSet;
 
 	@OneToMany(mappedBy = "client")
-	private Set<Service> services;
+	private Set<CarWork> carWorks;
 
 }
