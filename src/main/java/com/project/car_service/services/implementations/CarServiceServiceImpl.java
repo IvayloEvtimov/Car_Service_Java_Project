@@ -1,7 +1,8 @@
 package com.project.car_service.services.implementations;
 
-import com.project.car_service.repository.CarWorkRepository;
-import com.project.car_service.services.CarService;
+import com.project.car_service.entity.CarService;
+import com.project.car_service.repository.CarServiceRepository;
+import com.project.car_service.services.CarServiceService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,34 +10,34 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class CarServiceImpl implements CarService {
+public class CarServiceServiceImpl implements CarServiceService {
 
-	private final CarWorkRepository carWorkRepository;
+	private final CarServiceRepository carServiceRepository;
 
 
 	@Override
-	public List<CarWork> getServices() {
-		return carWorkRepository.findAll();
+	public List<CarService> getServices() {
+		return carServiceRepository.findAll();
 	}
 
 	@Override
-	public CarWork getService(Long serviceId) {
-		return carWorkRepository.findById(serviceId)
+	public CarService getService(Long serviceId) {
+		return carServiceRepository.findById(serviceId)
 				.orElseThrow(() -> new IllegalArgumentException("Wrong service id: " + serviceId));
 	}
 
 	@Override
-	public CarWork create(CarWork carWork) {
-		return carWorkRepository.save(carWork);
+	public CarService create(CarService carService) {
+		return carServiceRepository.save(carService);
 	}
 
 	@Override
-	public CarWork update(Long serviceId, CarWork carWork) {
-		return carWorkRepository.save(carWork);
+	public CarService update(Long serviceId, CarService carService) {
+		return carServiceRepository.save(carService);
 	}
 
 	@Override
 	public void deleteCar(Long serviceId) {
-		carWorkRepository.deleteById(serviceId);
+		carServiceRepository.deleteById(serviceId);
 	}
 }

@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -20,17 +21,21 @@ public class Person {
 	private String PID;
 
 	@Column(name = "First_Name", nullable = false)
-	private String First_Name;
+	private String firstName;
 
 	@Column(name = "Last_Name", nullable = false)
-	private String Last_Name;
+	private String lastName;
 
 	@Column(name = "Date_of_Birth", nullable = false)
 	private LocalDate dateOfBirth;
 
-	@OneToOne(mappedBy = "employee")
-	private Employee employee;
+	@OneToMany(mappedBy = "owner")
+	private Set<Car> cars;
 
-	@OneToOne(mappedBy = "client")
-	private Client client;
+	@OneToMany(mappedBy = "employee")
+	private Set<Employment> employmentSet;
+
+	@OneToMany(mappedBy = "client")
+	private Set<CarService> carServices;
+
 }

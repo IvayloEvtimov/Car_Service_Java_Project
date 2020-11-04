@@ -1,7 +1,7 @@
 package com.project.car_service.controllers.api;
 
-import com.project.car_service.entity.CarWork;
-import com.project.car_service.services.CarService;
+import com.project.car_service.entity.CarService;
+import com.project.car_service.services.CarServiceService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,22 +10,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/carWork")
 @AllArgsConstructor
-public class CarWorkApiController {
-	private final CarService carService;
+public class CarServiceApiController {
+	private final CarServiceService carServiceService;
 
 	@GetMapping
-	public List<CarWork> getServices() {
-		return carService.getServices();
+	public List<CarService> getServices() {
+		return carServiceService.getServices();
 	}
 
 	@RequestMapping("/{id}")
-	public CarWork getService(@PathVariable("id") int id) {
-		return carService.getService((long) id);
+	public CarService getService(@PathVariable("id") int id) {
+		return carServiceService.getService((long) id);
 	}
 
 	@PostMapping
-	public CarWork createCarWor(@RequestBody CarWork carWork){
-		return carService.create(carWork);
+	public CarService createCarWor(@RequestBody CarService carWork){
+		return carServiceService.create(carWork);
 	}
 
 

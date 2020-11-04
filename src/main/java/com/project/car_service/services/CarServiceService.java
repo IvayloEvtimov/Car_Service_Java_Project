@@ -4,15 +4,15 @@ import com.project.car_service.entity.*;
 
 import java.util.List;
 
-public interface CarService {
+public interface CarServiceService {
 
-	List<CarWork> getServices();
+	List<CarService> getServices();
 
-	CarWork getService(Long serviceId);
+	CarService getService(Long serviceId);
 
-	CarWork create(CarWork carWork);
+	CarService create(CarService carService);
 
-	CarWork update(Long serviceId, CarWork carWork);
+	CarService update(Long serviceId, CarService carService);
 
 	void deleteCar(Long serviceId);
 

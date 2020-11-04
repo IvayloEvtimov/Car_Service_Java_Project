@@ -1,14 +1,14 @@
 package com.project.car_service.repository;
 
 import com.project.car_service.entity.Car;
-import com.project.car_service.entity.CarWork;
+import com.project.car_service.entity.CarService;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface CarSerivceRepository extends JpaRepository<CarWork, Long> {
+public interface CarServiceRepository extends JpaRepository<CarService, Long> {
 
-	List<CarWork> findBy();
+	List<CarService> findBy();
 
-	List<CarWork> findAllByCar(Car car);
+	List<CarService> findAllByCar(Car car);
 }
