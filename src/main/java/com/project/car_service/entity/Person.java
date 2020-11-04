@@ -17,7 +17,7 @@ import java.util.Set;
 public class Person {
 
 	@Id
-	@Column(name = "PID", nullable = false, updatable = false)
+	@Column(name = "PID", nullable = false)
 	private String PID;
 
 	@Column(name = "First_Name", nullable = false)
@@ -36,6 +36,9 @@ public class Person {
 	private Set<Employment> employmentSet;
 
 	@OneToMany(mappedBy = "client")
-	private Set<CarService> carServices;
+	private Set<CarService> carServicesClient;
+
+	@OneToMany(mappedBy = "employee")
+	private Set<CarService> carServicesEmployee;
 
 }
