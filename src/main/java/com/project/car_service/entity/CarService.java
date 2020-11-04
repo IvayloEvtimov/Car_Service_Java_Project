@@ -16,15 +16,15 @@ public class CarService {
 
 	@Id
 	@Column(name = "service_id")
-	private String serviceID;
+	private Long serviceID;
 
 	@ManyToOne()
 	@JoinColumn(name = "Garage")
 	private Garage garage;
 
 	@ManyToOne()
-	@JoinColumn(name = "Employee")
-	private Employment employee;
+	@JoinColumn(name = "employee")
+	private Person employee;
 
 	@ManyToOne()
 	@JoinColumn(name = "Client")
