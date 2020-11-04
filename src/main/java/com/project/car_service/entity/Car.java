@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Set;
 
 @Getter
@@ -17,21 +18,13 @@ public class Car {
 	@Column(name = "License_Plate")
 	private String licensePlate;
 
-	@ManyToOne()
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "Owner")
 	private Person owner;
 
 	@ManyToOne
 	@JoinColumn(name = "Model")
-	private CarModel carModel;
-
-	public CarModel getCarModel() {
-		return carModel;
-	}
-
-	public void setCarModel(CarModel carModel) {
-		this.carModel = carModel;
-	}
+	private CarModel Model;
 
 	@OneToMany(mappedBy = "car")
 	private Set<CarService> carServiceSet;
