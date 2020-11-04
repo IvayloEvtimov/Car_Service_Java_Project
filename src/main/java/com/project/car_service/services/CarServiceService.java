@@ -4,7 +4,7 @@ import com.project.car_service.entity.*;
 
 import java.util.List;
 
-public interface CarWorkService {
+public interface CarService {
 
 	List<CarWork> getServices();
 

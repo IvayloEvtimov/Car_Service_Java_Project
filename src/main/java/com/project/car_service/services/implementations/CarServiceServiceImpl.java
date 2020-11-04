@@ -1,8 +1,7 @@
 package com.project.car_service.services.implementations;
 
-import com.project.car_service.entity.*;
 import com.project.car_service.repository.CarWorkRepository;
-import com.project.car_service.services.CarWorkService;
+import com.project.car_service.services.CarService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +9,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class CarWorkServiceImpl implements CarWorkService {
+public class CarServiceImpl implements CarService {
 
 	private final CarWorkRepository carWorkRepository;
 

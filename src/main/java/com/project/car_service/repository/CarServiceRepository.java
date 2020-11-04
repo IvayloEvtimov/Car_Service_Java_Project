@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface CarWorkRepository extends JpaRepository<CarWork, Long> {
+public interface CarSerivceRepository extends JpaRepository<CarWork, Long> {
 
 	List<CarWork> findBy();
 
