@@ -19,11 +19,12 @@ public class CarModel implements Serializable {
 	@Column(name = "Car_Model")
 	private String carModel;
 
-	@Id
-	@ManyToOne(optional = false)
-	@MapsId
+//	@Id
+	@ManyToOne()
+	@JoinColumn(name = "Car_Brand")
+//	@MapsId
 	private CarBrand carBrand;
 
-	@OneToMany(mappedBy = "carModel")
+	@OneToMany(mappedBy = "Model")
 	private Set<Car> cars;
 }
