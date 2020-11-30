@@ -1,4 +1,4 @@
-package com.project.car_service.entity;
+package com.project.car_service.data.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

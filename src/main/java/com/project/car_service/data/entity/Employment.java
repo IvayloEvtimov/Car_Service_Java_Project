@@ -1,4 +1,4 @@
-package com.project.car_service.entity;
+package com.project.car_service.data.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -6,8 +6,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
-import java.util.Set;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -28,7 +27,7 @@ public class Employment implements Serializable {
 	private Person employee;
 
 	@Column(name = "Date_Of_Hire")
-	private Date dateOfHire;
+	private LocalDate dateOfHire;
 
 	@ManyToOne()
 	@JoinColumn(name = "Qualification")
