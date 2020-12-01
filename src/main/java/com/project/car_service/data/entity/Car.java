@@ -23,7 +23,7 @@ public class Car {
 
 	@ManyToOne
 	@JoinColumn(name = "Model")
-	private CarModel Model;
+	private CarModel model;
 
 	@OneToMany(mappedBy = "car")
 	private Set<CarService> carServiceSet;
