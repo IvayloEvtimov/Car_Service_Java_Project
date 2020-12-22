@@ -3,10 +3,7 @@ package com.project.car_service.web.view.controllers;
 import com.project.car_service.dto.CarServiceDTO;
 import com.project.car_service.dto.CreateCarServiceDTO;
 import com.project.car_service.dto.UpdateCarServiceDTO;
-import com.project.car_service.services.CarServiceService;
-import com.project.car_service.services.EmploymentService;
-import com.project.car_service.services.GarageService;
-import com.project.car_service.services.PersonService;
+import com.project.car_service.services.*;
 import com.project.car_service.web.view.model.CarServiceViewModel;
 import com.project.car_service.web.view.model.CreateCarServiceViewModel;
 import com.project.car_service.web.view.model.UpdateCarServiceViewModel;
@@ -25,16 +22,17 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @RequestMapping("/carServices")
 public class CarServiceController {
-	private final CarServiceService carService;
+	private final CarServiceService carServiceService;
 	private final GarageService garageService;
 	private final EmploymentService employmentService;
 	private final PersonService personService;
+	private final CarService carService;
 
 	private final ModelMapper modelMapper;
 
 	@GetMapping
 	public String getServices( Model model ) {
-		final List<CarServiceViewModel> carServices = carService.getServices()
+		final List<CarServiceViewModel> carServices = carServiceService.getServices()
 				.stream()
 				.map(this::convertToCarServiceViewModel)
 				.collect(Collectors.toList());
@@ -47,7 +45,7 @@ public class CarServiceController {
 		model.addAttribute("garage", garageService.getGarages());
 		model.addAttribute("employee", employmentService.getEmployees());
 		model.addAttribute("client", personService.getPersons());
-		model.addAttribute("car", )
+		model.addAttribute("car", carService);
 		model.addAttribute("carService", new CreateCarServiceViewModel());
 		return "/carServices/createCarService";
 	}
@@ -58,13 +56,13 @@ public class CarServiceController {
 			return "/carServices/createCarService";
 		}
 
-		carService.createService(modelMapper.map(carServiceViewModel, CreateCarServiceDTO.class));
+		carServiceService.createService(modelMapper.map(carServiceViewModel, CreateCarServiceDTO.class));
 		return "redirect:/carServices";
 	}
 
 	@GetMapping("/editCarService/{id}")
 	public String showEditCarServiceForm( Model model, @PathVariable("id") Long serviceId ) {
-		model.addAttribute("carService", modelMapper.map(carService.getService(serviceId), UpdateCarServiceViewModel.class));
+		model.addAttribute("carService", modelMapper.map(carServiceService.getService(serviceId), UpdateCarServiceViewModel.class));
 		return "/carServices/editCarService";
 	}
 
@@ -75,13 +73,13 @@ public class CarServiceController {
 			return "/carServices/editCarService";
 		}
 
-		carService.updateService(serviceId, modelMapper.map(carServiceViewModel, UpdateCarServiceDTO.class));
+		carServiceService.updateService(serviceId, modelMapper.map(carServiceViewModel, UpdateCarServiceDTO.class));
 		return "redirect:/carServices";
 	}
 
 	@GetMapping("/delete/{id}")
 	public String processProgramForm( @PathVariable("id") Long serviceId ) {
-		carService.deleteService(serviceId);
+		carServiceService.deleteService(serviceId);
 		return "redirect:/carServices";
 	}
 
