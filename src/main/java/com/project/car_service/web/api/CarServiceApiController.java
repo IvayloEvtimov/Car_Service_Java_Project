@@ -5,8 +5,8 @@ import com.project.car_service.dto.CarServiceDTO;
 import com.project.car_service.dto.CreateCarServiceDTO;
 import com.project.car_service.dto.UpdateCarServiceDTO;
 import com.project.car_service.services.CarServiceService;
+import com.project.car_service.web.view.model.UpdateCarServiceViewModel;
 import lombok.AllArgsConstructor;
-import org.hibernate.sql.Update;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,10 +34,17 @@ public class CarServiceApiController {
 
 	@PostMapping
 	public CarService createCarService( @RequestBody @Valid CarService carService ) {
-		return carServiceService.create(modelMapper.map(carService, CreateCarServiceDTO.class));
+		return carServiceService.createService(modelMapper.map(carService, CreateCarServiceDTO.class));
 	}
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/{id}")
-	public CarService updateCarService( @PathVariable("id") Long serviceId, @RequestBody  )
+	public CarService updateCarService( @PathVariable("id") Long serviceId, @RequestBody UpdateCarServiceViewModel carServiceViewModel ) {
+		return carServiceService.updateService(serviceId, modelMapper.map(carServiceViewModel, UpdateCarServiceDTO.class));
+	}
+
+	@DeleteMapping(value = "/{id}")
+	public void deleteCarService( @PathVariable("id") Long serviceId ) {
+		carServiceService.deleteService(serviceId);
+	}
 
 }
