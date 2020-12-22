@@ -24,6 +24,6 @@ public class CarModel implements Serializable {
 //	@MapsId
 	private CarBrand carBrand;
 
-	@OneToMany(mappedBy = "Model")
+	@OneToMany(mappedBy = "model")
 	private Set<Car> cars;
 }
