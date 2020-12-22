@@ -1,20 +1,23 @@
 package com.project.car_service.services;
 
-import com.project.car_service.entity.*;
+import com.project.car_service.data.entity.CarService;
+import com.project.car_service.dto.CarServiceDTO;
+import com.project.car_service.dto.CreateCarServiceDTO;
+import com.project.car_service.dto.UpdateCarServiceDTO;
 
 import java.util.List;
 
 public interface CarServiceService {
 
-	List<CarService> getServices();
+	List<CarServiceDTO> getServices();
 
-	CarService getService(Long serviceId);
+	CarServiceDTO getService( Long serviceId );
 
-	CarService create(CarService carService);
+	CarService createService( CreateCarServiceDTO createCarServiceDTO );
 
-	CarService update(Long serviceId, CarService carService);
+	CarService updateService( Long serviceId, UpdateCarServiceDTO updateCarServiceDTO );
 
-	void deleteCar(Long serviceId);
+	void deleteService( Long serviceId );
 
 
 }
