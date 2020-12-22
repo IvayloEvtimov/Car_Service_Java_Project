@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "employment")
+@IdClass(EmploymentId.class)
 public class Employment implements Serializable {
 	@Id
 	@ManyToOne()
