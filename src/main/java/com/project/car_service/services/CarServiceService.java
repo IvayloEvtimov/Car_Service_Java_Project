@@ -5,15 +5,17 @@ import com.project.car_service.dto.CarServiceDTO;
 import com.project.car_service.dto.CreateCarServiceDTO;
 import com.project.car_service.dto.UpdateCarServiceDTO;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
 import java.util.List;
 
 public interface CarServiceService {
 
 	List<CarServiceDTO> getServices();
 
-	CarServiceDTO getService( Long serviceId );
+	CarServiceDTO getService( @Min(1) Long serviceId );
 
-	CarService createService( CreateCarServiceDTO createCarServiceDTO );
+	CarService createService( @Valid CreateCarServiceDTO createCarServiceDTO );
 
 	CarService updateService( Long serviceId, UpdateCarServiceDTO updateCarServiceDTO );
 
