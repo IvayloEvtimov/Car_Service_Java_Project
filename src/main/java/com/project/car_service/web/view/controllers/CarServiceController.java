@@ -42,10 +42,10 @@ public class CarServiceController {
 
 	@GetMapping("/createCarService")
 	public String showCreateCarServiceForm( Model model ) {
-		model.addAttribute("garage", garageService.getGarages());
-		model.addAttribute("employee", employmentService.getEmployees());
-		model.addAttribute("client", personService.getPersons());
-		model.addAttribute("car", carService);
+		model.addAttribute("garages", garageService.getGarages());
+		model.addAttribute("employees", employmentService.getEmployees());
+		model.addAttribute("clients", personService.getPersons());
+		model.addAttribute("cars", carService);
 		model.addAttribute("carService", new CreateCarServiceViewModel());
 		return "/carServices/createCarService";
 	}
