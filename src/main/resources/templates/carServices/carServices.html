@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body>
 <header th:replace="fragments :: header"></header>
-<h4>Registered Schools:</h4>
+<h4>Cars Being Worked on:</h4>
 <div class="col-6">
     <h3 th:unless="${carServices} and ${carServices.size()}">There are no cars that are being worked on!</h3>
     <table th:if="${carServices.size()>0}" class="table table-hover">
@@ -14,7 +14,7 @@
         <tr th:each="service : ${carServices}">
             <td th:text="${service.serviceId}"></td>
 <!--            <td th:text="${school.name}"></td>-->
-            <td><a class="btn btn-info" th:href="@{'/schools/edit-school/'+${service.serviceId}}">Edit</a></td>
+            <td><a class="btn btn-info" th:href="@{'/carServices/editCarService'+${service.serviceId}}">Edit</a></td>
             <td><a class="btn btn-danger" th:href="@{'/schools/delete/'+${service.serviceId}}">Delete</a></td>
         </tr>
     </table>
