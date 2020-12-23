@@ -45,7 +45,7 @@ public class CarServiceController {
 		model.addAttribute("garages", garageService.getGarages());
 		model.addAttribute("employees", employmentService.getEmployees());
 		model.addAttribute("clients", personService.getPersons());
-		model.addAttribute("cars", carService);
+		model.addAttribute("cars", carService.getCars());
 		model.addAttribute("carService", new CreateCarServiceViewModel());
 		return "/carServices/createCarService";
 	}
