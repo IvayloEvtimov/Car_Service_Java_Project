@@ -24,7 +24,7 @@
             <td th:text="${service.carPart.partName}"></td>
 <!--            <td th:text="${school.name}"></td>-->
             <td><a class="btn btn-info" th:href="@{'/carServices/editCarService/'+${service.serviceId}}">Edit</a></td>
-            <td><a class="btn btn-danger" th:href="@{'/schools/delete/'+${service.serviceId}}">Delete</a></td>
+            <td><a class="btn btn-danger" th:href="@{'/carServices/delete/'+${service.serviceId}}">Delete</a></td>
         </tr>
     </table>
 </div>
