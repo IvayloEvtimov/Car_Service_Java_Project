@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+
+<h4>Edit Existing Car Service</h4>
+<div class="col-6">
+    <form action="#" th:action="@{carServices/editCarService.html}" th:object="${carService}" method="post">
+        <div class="form-group">
+            <div class="form-group">
+                <label for="garage">Garage</label>
+                <select class="form-control" th:field="${garages}" id="garage">
+                    <option value="" th:text="${carService.garage.UIC} + ' ' + ${carService.garage.name}"></option>
+                    <option th:each="garage : ${garages}" th:value="${garages}"
+                            th:text="${garage.UIC} + ' -> ' + ${garage.name} "></option>
+                </select>
+                <label for="employee">Employee</label>
+                <select class="form-control" th:field="${employees}" id="employee">
+                    <option value="" th:text="${carService.employee.firstName} + ' ' + ${carService.employee.lastName}"></option>
+                    <option th:each="employee : ${employees}" th:value="${employees}"
+                            th:text="${employee.employee.firstName} + ' ' + ${employee.employee.lastName} + ' -> ' + ${employee.garage.UIC}"></option>
+                </select>
+                <label for="client">Client</label>
+                <select class="form-control" th:field="${clients}" id="client">
+                    <option value="" th:text="${carService.client.firstName} + ' ' + ${carService.client.lastName}"></option>
+                    <option th:each="client : ${clients}" th:value="${clients}"
+                            th:text="${client.firstName} + ' ' + ${client.lastName}"></option>
+                </select>
+                <label for="car">Car</label>
+                <select class="form-control" th:if="${cars.size()>0}" th:field="${cars}" id="car">
+                    <option value="" th:text="${carService.car.licensePlate} + ' -> ' + ${carService.car.owner.firstName} + ' ' + ${carService.car.owner.lastName} "></option>
+                    <option th:each="car : ${cars}" th:value="${cars}"
+                            th:text="${car.licensePlate} + ' -> ' + ${car.owner.firstName} + ' ' + ${car.owner.lastName}"></option>
+                </select>
+                <button type="submit" class="btn btn-primary">Update Car Service</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
