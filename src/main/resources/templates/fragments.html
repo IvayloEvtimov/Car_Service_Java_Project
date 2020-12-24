@@ -11,7 +11,9 @@ and open the template in the editor.
     <link href="/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 </head>
 <header th:fragment="header">
-    <h1>Car Service</h1>
+    <h1>
+        <a class="nav-link" href="/">Car Service</a>
+    </h1>
     <nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navigation">
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
