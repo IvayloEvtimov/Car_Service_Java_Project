@@ -5,7 +5,7 @@
 <header th:replace="fragments :: header"></header>
 <h4>Register new Car Service</h4>
 <div class="col-6">
-    <form action="#" th:action="@{/carServices/createCarService.html}" th:object="${carService}" method="post">
+    <form action="#" th:action="@{/carServices/create/}" th:object="${carService}" method="post">
         <div class="form-group">
             <div class="form-group">
                 <label for="garage">Garage</label>
@@ -32,6 +32,21 @@
                     <option th:each="car : ${cars}" th:value="${cars}"
                             th:text="${car.licensePlate} + ' -> ' + ${car.owner.firstName} + ' ' + ${car.owner.lastName}"></option>
                 </select>
+                <label for="car">Car Part</label>
+                <select class="form-control" th:if="${carParts.size()>0}" th:field="${carParts}" id="car">
+                    <option value="">Select Car Part</option>
+                    <option th:each="carPart : ${carParts}" th:value="${carParts}"
+                            th:text="${carPart.partName}"></option>
+                </select>
+
+                <label for="car">Work Needed</label>
+                <select class="form-control" th:if="${qualifications.size()>0}" th:field="${qualifications}" id="qualification">
+                    <option value="">Work Needed</option>
+                    <option th:each="qualification : ${qualifications}" th:value="${qualifications}"
+                            th:text="${qualification.qualificationName}"></option>
+                </select>
+
+
                 <button type="submit" class="btn btn-primary">Save Car Service</button>
             </div>
         </div>
