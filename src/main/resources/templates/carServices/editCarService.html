@@ -33,6 +33,20 @@
                     <option th:each="car : ${cars}" th:value="${cars}"
                             th:text="${car.licensePlate} + ' -> ' + ${car.owner.firstName} + ' ' + ${car.owner.lastName}"></option>
                 </select>
+                <label for="car">Car Part</label>
+                <select class="form-control" th:if="${carParts.size()>0}" th:field="${carPars}" id="carPart">
+                    <option value="" th:text="${carService.carPart.partName}"></option>
+                    <option th:each="carPart : ${carParts}" th:value="${carParts}"
+                            th:text="${carPart.partName}"></option>
+                </select>
+
+                <label for="car">Work Needed</label>
+                <select class="form-control" th:if="${qualifications.size()>0}" th:field="${qualifications}" id="qualification">
+                    <option value="" th:text="${carService.qualification.qualificationName}"></option>
+                    <option th:each="qualification : ${qualifications}" th:value="${qualifications}"
+                            th:text="${qualification.qualificationName}"></option>
+                </select>
+
                 <button type="submit" class="btn btn-primary">Update Car Service</button>
             </div>
         </div>
