@@ -62,6 +62,10 @@ public class CarServiceController {
 
 	@GetMapping("/editCarService/{id}")
 	public String showEditCarServiceForm( Model model, @PathVariable("id") Long serviceId ) {
+		model.addAttribute("garages", garageService.getGarages());
+		model.addAttribute("employees", employmentService.getEmployees());
+		model.addAttribute("clients", personService.getPersons());
+		model.addAttribute("cars", carService.getCars());
 		model.addAttribute("carService", modelMapper.map(carServiceService.getService(serviceId), UpdateCarServiceViewModel.class));
 		return "/carServices/editCarService";
 	}
