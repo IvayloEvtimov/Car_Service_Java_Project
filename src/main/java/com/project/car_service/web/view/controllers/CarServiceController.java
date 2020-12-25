@@ -28,7 +28,7 @@ public class CarServiceController {
 	private final PersonService personService;
 	private final CarService carService;
 	private final CarPartService carPartService;
-
+	private final QualificationService qualificationService;
 	private final ModelMapper modelMapper;
 
 	@GetMapping
@@ -48,12 +48,13 @@ public class CarServiceController {
 		model.addAttribute("clients", personService.getPersons());
 		model.addAttribute("cars", carService.getCars());
 		model.addAttribute("carParts", carPartService.getCarParts());
+		model.addAttribute("qualifications", qualificationService.getQualifications());
 		model.addAttribute("carService", new CreateCarServiceViewModel());
 		return "/carServices/createCarService";
 	}
 
 	@PostMapping("/create")
-	public String createCarService( @Valid @ModelAttribute("carService") CreateCarServiceViewModel carServiceViewModel, BindingResult bindingResult ) {
+	public String createCarService( @Valid @ModelAttribute("carService") CreateCarServiceViewModel carServiceViewModel, BindingResult bindingResult, Model model ) {
 		if (bindingResult.hasErrors()) {
 			return "/carServices/createCarService";
 		}
@@ -69,6 +70,7 @@ public class CarServiceController {
 		model.addAttribute("clients", personService.getPersons());
 		model.addAttribute("cars", carService.getCars());
 		model.addAttribute("carParts", carPartService.getCarParts());
+		model.addAttribute("qualifications", qualificationService.getQualifications());
 		model.addAttribute("carService", modelMapper.map(carServiceService.getService(serviceId), UpdateCarServiceViewModel.class));
 		return "/carServices/editCarService";
 	}
