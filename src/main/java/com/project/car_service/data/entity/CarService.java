@@ -45,4 +45,7 @@ public class CarService {
 	@Column(name = "date_of_service")
 	private Date dateOfService;
 
+	@Column(name = "price")
+	private Integer price;
+
 }
