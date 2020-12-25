@@ -3,6 +3,7 @@ package com.project.car_service.services.implementations;
 import com.project.car_service.data.entity.Employment;
 import com.project.car_service.data.entity.Garage;
 import com.project.car_service.data.entity.Person;
+import com.project.car_service.data.entity.Qualification;
 import com.project.car_service.data.repository.EmploymentRepository;
 import com.project.car_service.dto.EmploymentDTO;
 import com.project.car_service.services.EmploymentService;
@@ -32,6 +33,11 @@ public class EmploymentServiceImpl implements EmploymentService {
 	@Override
 	public List<EmploymentDTO> findEmploymentByEmployeeAndGarage( Person employee, Garage garage ) {
 		return employmentRepository.findEmploymentByEmployeeAndGarage(employee, garage).stream().map(this::convertToEmploymentDTO).collect(Collectors.toList());
+	}
+
+	@Override
+	public Employment getEmploymentByEmployee_PIDAndQualification( String PID, Qualification qualification ) {
+		return employmentRepository.getEmploymentByEmployee_PIDAndQualification(PID, qualification);
 	}
 
 	private EmploymentDTO convertToEmploymentDTO( Employment employment ) {
