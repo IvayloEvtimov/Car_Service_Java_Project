@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface EmploymentRepository extends JpaRepository<Employment, Long> {
+public interface EmploymentRepository extends JpaRepository<Employment, String> {
 
 }
