@@ -12,6 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Entity
 @Table(name = "work_brand")
+@IdClass(WorkBrandId.class)
 public class WorkBrand implements Serializable {
 	@Id
 	@ManyToOne()
