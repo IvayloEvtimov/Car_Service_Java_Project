@@ -20,4 +20,5 @@ public class CarServiceDTO {
     private CarPart carPart;
     private Qualification qualification;
     private Date dateOfService;
+    private Integer price;
 }

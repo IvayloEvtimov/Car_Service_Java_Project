@@ -15,26 +15,28 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 public class CreateCarServiceDTO {
-	@NotBlank
+	@NotNull
 	private Garage garage;
 
-	@NotBlank
+	@NotNull
 	private Person employee;
 
-	@NotBlank
+	@NotNull
 	private Person client;
 
-	@NotBlank
+	@NotNull
 	private Car car;
 
-	@NotBlank
+	@NotNull
 	private CarPart carPart;
 
-	@NotBlank
+	@NotNull
 	private Qualification qualification;
 
 	@NotNull
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Future(message = "Date has to be in the future")
 	private Date dateOfService;
+
+	private Integer price;
 }
