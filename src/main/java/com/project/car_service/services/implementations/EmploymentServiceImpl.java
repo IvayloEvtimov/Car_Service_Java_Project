@@ -36,7 +36,7 @@ public class EmploymentServiceImpl implements EmploymentService {
 	}
 
 	@Override
-	public Employment getEmploymentByEmployee_PIDAndQualification( String PID, Qualification qualification ) {
+	public Employment getEmploymentByEmployee_PIDAndQualification( String PID, String qualification ) {
 		return employmentRepository.getEmploymentByEmployee_PIDAndQualification(PID, qualification);
 	}
 
