@@ -39,7 +39,7 @@
             <select class="form-control" th:field="${carService.car}" id="car">
                 <option value="">Select Car</option>
                 <option th:each="car : ${cars}" th:value="${car.licensePlate}"
-                        th:text="${car.licensePlate} + ' -> ' + ${car.owner.firstName} + ' ' + ${car.owner.lastName}"></option>
+                        th:text="${car.licensePlate} + ' : ' + ${car.model.carBrand.brandName} + ' ' + ${car.model.carModel} + ' -> ' + ${car.owner.firstName} + ' ' + ${car.owner.lastName} "></option>
             </select>
         </div>
 
