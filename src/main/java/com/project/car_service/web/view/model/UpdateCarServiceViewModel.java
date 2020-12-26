@@ -39,4 +39,6 @@ public class UpdateCarServiceViewModel {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Future(message = "Date must be in the future")
 	private Date dateOfService;
+
+	private Integer price;
 }

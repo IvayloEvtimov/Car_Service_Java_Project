@@ -19,4 +19,5 @@ public class CarServiceViewModel {
 	private CarPart carPart;
 	private Qualification qualification;
 	private Date dateOfService;
+	private Integer price;
 }
