@@ -29,6 +29,7 @@ public class CarServiceController {
 	private final CarService carService;
 	private final CarPartService carPartService;
 	private final QualificationService qualificationService;
+	private final WorkBrandService workBrandService;
 	private final ModelMapper modelMapper;
 
 	@GetMapping
@@ -55,7 +56,7 @@ public class CarServiceController {
 
 	@PostMapping("/create")
 	public String createCarService( @Valid @ModelAttribute("carService") CreateCarServiceViewModel carServiceViewModel, BindingResult bindingResult, Model model ) {
-		if (bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors() || (! carServiceViewModel.check(employmentService, workBrandService))) {
 			return "/carServices/createCarService";
 		}
 
@@ -78,7 +79,7 @@ public class CarServiceController {
 	@PostMapping("/update/{id}")
 	public String updateCarService( @PathVariable("id") Long serviceId, @Valid @ModelAttribute("carService") UpdateCarServiceViewModel carServiceViewModel,
 	                                BindingResult bindingResult ) {
-		if (bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors() || (! carServiceViewModel.check(employmentService, workBrandService))) {
 			return "/carServices/editCarService";
 		}
 
