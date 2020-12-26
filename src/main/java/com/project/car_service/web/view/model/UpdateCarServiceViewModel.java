@@ -1,6 +1,8 @@
 package com.project.car_service.web.view.model;
 
 import com.project.car_service.data.entity.*;
+import com.project.car_service.services.EmploymentService;
+import com.project.car_service.services.WorkBrandService;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -41,4 +43,22 @@ public class UpdateCarServiceViewModel {
 	private Date dateOfService;
 
 	private Integer price;
+
+
+	public boolean check( EmploymentService employmentService, WorkBrandService workBrandService ) {
+		if (car.getOwner() != client)
+			return false;
+
+		if (employmentService.findEmploymentByEmployeeAndGarage(employee, garage).isEmpty())
+			return false;
+
+		if (employmentService.getEmploymentByEmployee_PIDAndQualification(employee.getPID(), qualification) == null)
+			return false;
+
+		if (workBrandService.getWorkBrandByCarBrand_BrandNameAndGarage_UIC(car.getModel().getCarBrand().getBrandName(), garage.getUIC()) == null)
+			return false;
+
+
+		return true;
+	}
 }
