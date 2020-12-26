@@ -12,5 +12,5 @@ import java.util.List;
 public interface EmploymentRepository extends JpaRepository<Employment, String> {
 	List<Employment> findEmploymentByEmployeeAndGarage( Person employee, Garage garage );
 
-	Employment getEmploymentByEmployee_PIDAndQualification( String PID, String qualification );
+	Employment getEmploymentByEmployee_PIDAndQualification( String PID, Qualification qualification );
 }

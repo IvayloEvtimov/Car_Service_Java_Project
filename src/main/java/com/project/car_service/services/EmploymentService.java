@@ -15,5 +15,5 @@ public interface EmploymentService {
 
 	List<EmploymentDTO> findEmploymentByEmployeeAndGarage( Person employee, Garage garage );
 
-	Employment getEmploymentByEmployee_PIDAndQualification( String PID, String qualification );
+	Employment getEmploymentByEmployee_PIDAndQualification( String PID, Qualification qualification );
 }
