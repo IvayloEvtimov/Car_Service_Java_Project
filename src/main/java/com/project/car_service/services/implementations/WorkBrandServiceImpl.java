@@ -18,6 +18,6 @@ public class WorkBrandServiceImpl implements WorkBrandService {
 
 	@Override
 	public WorkBrand getWorkBrandByCarBrand_BrandNameAndGarage_UIC( String brandName, String UIC ) {
-		return workBrandRepository.getWorkBrandByCarBrand_BrandNameAndGarage_UIC(brandName,UIC);
+		return workBrandRepository.getWorkBrandByCarBrand_BrandNameAndGarage_UIC(brandName, UIC);
 	}
 }

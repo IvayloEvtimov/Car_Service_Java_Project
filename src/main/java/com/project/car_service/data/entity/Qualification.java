@@ -20,6 +20,6 @@ public class Qualification {
 	@OneToMany(mappedBy = "qualification")
 	private Set<Employment> employmentSet;
 
-	@OneToMany(mappedBy = "neededQualification")
+	@OneToMany(mappedBy = "qualification")
 	private Set<CarService> carServices;
 }

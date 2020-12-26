@@ -15,6 +15,7 @@ import java.util.Date;
 public class CarService {
 
 	@Id
+	@GeneratedValue
 	@Column(name = "service_id")
 	private Long serviceID;
 
@@ -39,8 +40,8 @@ public class CarService {
 	private CarPart carPart;
 
 	@ManyToOne()
-	@JoinColumn(name =  "needed_qualification")
-	private Qualification neededQualification;
+	@JoinColumn(name =  "qualification")
+	private Qualification qualification;
 
 	@Column(name = "date_of_service")
 	private Date dateOfService;
