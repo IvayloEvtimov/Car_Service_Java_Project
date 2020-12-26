@@ -13,6 +13,9 @@
         <th>Car</th>
         <th>Car's Owner</th>
         <th>Service</th>
+        <th>Work Needed</th>
+        <th>Date of Service</th>
+        <th>Price</th>
         <th>Edit</th>
         <th>Delete</th>
         <tr th:each="service : ${carServices}">
@@ -22,7 +25,9 @@
             <td th:text="${service.car.licensePlate} + ' : ' + ${service.car.model.carBrand.brandName} + ' ' + ${service.car.model.carModel}"></td>
             <td th:text="${service.client.firstName} + ' ' + ${service.client.lastName}"></td>
             <td th:text="${service.carPart.partName}"></td>
-<!--            <td th:text="${school.name}"></td>-->
+            <td th:text="${service.qualification.qualificationName}"></td>
+            <td th:text="${service.dateOfService}"></td>
+            <td th:text="${service.price}"></td>
             <td><a class="btn btn-info" th:href="@{'/carServices/editCarService/'+${service.serviceId}}">Edit</a></td>
             <td><a class="btn btn-danger" th:href="@{'/carServices/delete/'+${service.serviceId}}">Delete</a></td>
         </tr>
