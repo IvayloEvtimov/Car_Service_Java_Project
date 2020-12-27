@@ -31,8 +31,8 @@ public class EmploymentServiceImpl implements EmploymentService {
 	}
 
 	@Override
-	public List<EmploymentDTO> findEmploymentByEmployeeAndGarage( Person employee, Garage garage ) {
-		return employmentRepository.findEmploymentByEmployeeAndGarage(employee, garage).stream().map(this::convertToEmploymentDTO).collect(Collectors.toList());
+	public List<EmploymentDTO> findEmploymentByEmployee_PIDAndGarage_UIC( String PID, String UIC ) {
+		return employmentRepository.findEmploymentByEmployee_PIDAndGarage_UIC(PID, UIC).stream().map(this::convertToEmploymentDTO).collect(Collectors.toList());
 	}
 
 	@Override
