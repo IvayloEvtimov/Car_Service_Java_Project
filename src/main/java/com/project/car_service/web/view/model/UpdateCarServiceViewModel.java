@@ -49,7 +49,7 @@ public class UpdateCarServiceViewModel {
 		if (car.getOwner() != client)
 			return false;
 
-		if (employmentService.findEmploymentByEmployeeAndGarage(employee, garage).isEmpty())
+		if (employmentService.findEmploymentByEmployee_PIDAndGarage_UIC(employee.getPID(), garage.getUIC()).isEmpty())
 			return false;
 
 		if (employmentService.getEmploymentByEmployee_PIDAndQualification(employee.getPID(), qualification) == null)
