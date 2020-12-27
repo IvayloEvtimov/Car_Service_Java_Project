@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface EmploymentRepository extends JpaRepository<Employment, String> {
-	List<Employment> findEmploymentByEmployeeAndGarage( Person employee, Garage garage );
+	List<Employment> findEmploymentByEmployee_PIDAndGarage_UIC(String PID, String UIC);
 
 	Employment getEmploymentByEmployee_PIDAndQualification( String PID, Qualification qualification );
 }
