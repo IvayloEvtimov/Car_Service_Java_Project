@@ -12,4 +12,12 @@ public interface CarServiceRepository extends JpaRepository<CarService, Long> {
 
 
 	List<CarService> findAllByCar(Car car);
+
+	List<CarService> findCarServicesByCar_LicensePlate(String licensePlate);
+
+	List<CarService> findCarServicesByEmployee_PID(String PID);
+
+	List<CarService> findCarServicesByCar_LicensePlateAndEmployee_PID(String licensePlate, String PID);
+
+	List<CarService> findCarServicesByClient_PID(String PID);
 }

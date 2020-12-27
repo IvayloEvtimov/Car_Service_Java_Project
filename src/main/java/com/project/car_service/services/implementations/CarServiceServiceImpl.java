@@ -28,10 +28,9 @@ public class CarServiceServiceImpl implements CarServiceService {
 
 	@Override
 	public List<CarServiceDTO> getServices() {
-		List<CarServiceDTO> res = carServiceRepository.findAll().stream()
+		return carServiceRepository.findAll().stream()
 				.map(this::convertToCarServiceDTO)
 				.collect(Collectors.toList());
-		return res;
 	}
 
 	@Override
@@ -48,13 +47,32 @@ public class CarServiceServiceImpl implements CarServiceService {
 
 	@Override
 	public CarService updateService( Long serviceId, UpdateCarServiceDTO updateCarServiceDTO ) {
-		CarService carService =modelMapper.map(updateCarServiceDTO, CarService.class);
-		return carServiceRepository.save(carService);
+		return carServiceRepository.save(modelMapper.map(updateCarServiceDTO, CarService.class));
 	}
 
 	@Override
 	public void deleteService( Long serviceId ) {
 		carServiceRepository.deleteById(serviceId);
+	}
+
+	@Override
+	public List<CarServiceDTO> findCarServicesByCar_LicensePlate( String licensePlate ) {
+		return carServiceRepository.findCarServicesByCar_LicensePlate(licensePlate).stream().map(this::convertToCarServiceDTO).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<CarServiceDTO> findCarServicesByEmployee_PID( String PID ) {
+		return carServiceRepository.findCarServicesByEmployee_PID(PID).stream().map(this::convertToCarServiceDTO).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<CarServiceDTO> findCarServicesByCar_LicensePlateAndEmployee_PID( String licensePlate, String PID ) {
+		return carServiceRepository.findCarServicesByCar_LicensePlateAndEmployee_PID(licensePlate, PID).stream().map(this::convertToCarServiceDTO).collect(Collectors.toList());
+	}
+
+	@Override
+	public List<CarServiceDTO> findCarServicesByClient_PID( String PID ) {
+		return carServiceRepository.findCarServicesByClient_PID(PID).stream().map(this::convertToCarServiceDTO).collect(Collectors.toList());
 	}
 
 
