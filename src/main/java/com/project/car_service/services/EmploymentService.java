@@ -13,7 +13,7 @@ import java.util.List;
 public interface EmploymentService {
 	List<EmploymentDTO> getEmployees();
 
-	List<EmploymentDTO> findEmploymentByEmployeeAndGarage( Person employee, Garage garage );
+	List<EmploymentDTO> findEmploymentByEmployee_PIDAndGarage_UIC( String PID, String UIC );
 
 	Employment getEmploymentByEmployee_PIDAndQualification( String PID, Qualification qualification );
 }
