@@ -42,6 +42,21 @@ public class CarServiceController {
 		return "/carServices/carServices";
 	}
 
+	@GetMapping("/findByLicensePlate/")
+	public String findByLicensePlateForm( Model model ) {
+		model.addAttribute("cars", carService.getCars());
+		model.addAttribute("license", "");
+
+		return "/carServices/findByLicensePlate";
+	}
+
+	@GetMapping("/findByLicensePlate/{license}")
+	public String findByLicensePlate(Model model, @PathVariable("license") String license){
+		model.addAttribute("found", carServiceService.findCarServicesByCar_LicensePlate(license));
+
+		return "/carServices/findByLicensePlate";
+	}
+
 	@GetMapping("/createCarService")
 	public String showCreateCarServiceForm( Model model ) {
 		model.addAttribute("garages", garageService.getGarages());
