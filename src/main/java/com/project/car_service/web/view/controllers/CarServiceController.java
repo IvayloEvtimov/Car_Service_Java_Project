@@ -51,27 +51,41 @@ public class CarServiceController {
 	}
 
 	@GetMapping("/findByLicensePlate/{license}")
-	public String findByLicensePlate(Model model, @PathVariable("license") String license){
+	public String findByLicensePlate( Model model, @PathVariable("license") String license ) {
 		model.addAttribute("found", carServiceService.findCarServicesByCar_LicensePlate(license));
 
 		return "/carServices/findByLicensePlate";
 	}
 
 	@GetMapping("/findByEmployee/")
-	public String findCarServicesByEmployee_PIDForm(Model model) {
+	public String findCarServicesByEmployee_PIDForm( Model model ) {
 		model.addAttribute("employees", employmentService.getEmployees());
 
 		return "/carServices/findByEmployee";
 	}
 
 	@GetMapping("/findByEmployee/{PID}")
-	public String findCarServicesByEmployee_PID(Model model, @PathVariable("PID") String PID) {
+	public String findCarServicesByEmployee_PID( Model model, @PathVariable("PID") String PID ) {
 		model.addAttribute("found", carServiceService.findCarServicesByEmployee_PID(PID));
 //		model.addAttribute("employee", employmentService.)
 
 		return "/carServices/findByEmployee";
 	}
-	
+
+	@GetMapping("/findByClient")
+	public String findByClientForm( Model model ) {
+		model.addAttribute("clients", carServiceService.findAllClients());
+
+		return "/carServices/findByClient";
+	}
+
+	@GetMapping("/findByClient/{PID}")
+	public String findByClient( Model model, @PathVariable("PID") String PID ) {
+		model.addAttribute("found", carServiceService.findCarServicesByClient_PID(PID));
+
+		return "/carServices/findByClient";
+	}
+
 
 	@GetMapping("/createCarService")
 	public String showCreateCarServiceForm( Model model ) {
