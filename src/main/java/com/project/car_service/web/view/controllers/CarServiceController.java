@@ -57,6 +57,22 @@ public class CarServiceController {
 		return "/carServices/findByLicensePlate";
 	}
 
+	@GetMapping("/findByEmployee/")
+	public String findCarServicesByEmployee_PIDForm(Model model) {
+		model.addAttribute("employees", employmentService.getEmployees());
+
+		return "/carServices/findByEmployee";
+	}
+
+	@GetMapping("/findByEmployee/{PID}")
+	public String findCarServicesByEmployee_PID(Model model, @PathVariable("PID") String PID) {
+		model.addAttribute("found", carServiceService.findCarServicesByEmployee_PID(PID));
+//		model.addAttribute("employee", employmentService.)
+
+		return "/carServices/findByEmployee";
+	}
+	
+
 	@GetMapping("/createCarService")
 	public String showCreateCarServiceForm( Model model ) {
 		model.addAttribute("garages", garageService.getGarages());
@@ -68,6 +84,7 @@ public class CarServiceController {
 		model.addAttribute("carService", new CreateCarServiceViewModel());
 		return "/carServices/createCarService";
 	}
+
 
 	@PostMapping("/create")
 	public String createCarService( @Valid @ModelAttribute("carService") CreateCarServiceViewModel carServiceViewModel, BindingResult bindingResult, Model model ) {
