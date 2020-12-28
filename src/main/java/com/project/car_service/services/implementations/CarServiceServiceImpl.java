@@ -1,8 +1,10 @@
 package com.project.car_service.services.implementations;
 
 import com.project.car_service.data.entity.CarService;
+import com.project.car_service.data.entity.Person;
 import com.project.car_service.dto.CarServiceDTO;
 import com.project.car_service.dto.CreateCarServiceDTO;
+import com.project.car_service.dto.PersonDTO;
 import com.project.car_service.dto.UpdateCarServiceDTO;
 import com.project.car_service.exceptions.CarServiceNotFoundException;
 import com.project.car_service.repository.CarServiceRepository;
@@ -65,18 +67,27 @@ public class CarServiceServiceImpl implements CarServiceService {
 		return carServiceRepository.findCarServicesByEmployee_PID(PID).stream().map(this::convertToCarServiceDTO).collect(Collectors.toList());
 	}
 
-	@Override
-	public List<CarServiceDTO> findCarServicesByCar_LicensePlateAndEmployee_PID( String licensePlate, String PID ) {
-		return carServiceRepository.findCarServicesByCar_LicensePlateAndEmployee_PID(licensePlate, PID).stream().map(this::convertToCarServiceDTO).collect(Collectors.toList());
-	}
+	// Maybe Useless
+//	@Override
+//	public List<CarServiceDTO> findCarServicesByCar_LicensePlateAndEmployee_PID( String licensePlate, String PID ) {
+//		return carServiceRepository.findCarServicesByCar_LicensePlateAndEmployee_PID(licensePlate, PID).stream().map(this::convertToCarServiceDTO).collect(Collectors.toList());
+//	}
 
 	@Override
 	public List<CarServiceDTO> findCarServicesByClient_PID( String PID ) {
 		return carServiceRepository.findCarServicesByClient_PID(PID).stream().map(this::convertToCarServiceDTO).collect(Collectors.toList());
 	}
 
+	@Override
+	public List<PersonDTO> findAllClients() {
+		return carServiceRepository.findAllClients().stream().map(this::convertToPersonDTO).collect(Collectors.toList());
+	}
 
 	private CarServiceDTO convertToCarServiceDTO( CarService carService ) {
 		return modelMapper.map(carService, CarServiceDTO.class);
+	}
+
+	private PersonDTO convertToPersonDTO( Person person ) {
+		return modelMapper.map(person, PersonDTO.class);
 	}
 }

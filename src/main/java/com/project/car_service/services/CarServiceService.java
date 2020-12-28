@@ -3,6 +3,7 @@ package com.project.car_service.services;
 import com.project.car_service.data.entity.CarService;
 import com.project.car_service.dto.CarServiceDTO;
 import com.project.car_service.dto.CreateCarServiceDTO;
+import com.project.car_service.dto.PersonDTO;
 import com.project.car_service.dto.UpdateCarServiceDTO;
 
 import javax.validation.Valid;
@@ -25,8 +26,10 @@ public interface CarServiceService {
 
 	List<CarServiceDTO> findCarServicesByEmployee_PID(String PID);
 
-	List<CarServiceDTO> findCarServicesByCar_LicensePlateAndEmployee_PID(String licensePlate, String PID);
+//	List<PersonDTO> findCarServicesByCar_LicensePlateAndEmployee_PID( String licensePlate, String PID);
 
 	List<CarServiceDTO> findCarServicesByClient_PID(String PID);
+
+	List<PersonDTO> findAllClients();
 
 }
