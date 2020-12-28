@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+
+<div class="col-6" th:if="${employees}">
+    <h3 th:unless="${employees} and ${employees.size()}">There are no cars that are being worked on!</h3>
+    <table class="table table-hover" th:if="${employees.size()>0}">
+        <th>Emlpoyee Name</th>
+        <th>Garage</th>
+        <th>Show</th>
+        <tr th:each="employee : ${employees}">
+            <td th:text="${employee.employee.firstName} + ' ' + ${employee.employee.lastName}"></td>
+            <td th:text="${employee.garage.UIC} + ': ' + ${employee.garage.name}"></td>
+            <td><a class="btn btn-info" th:href="@{'/carServices/findByEmployee/'+${employee.employee.PID}}">Show</a>   </td>
+        </tr>
+    </table>
+</div>
+
+<div class="col-6">
+<!--    <h3 th:text="Employee: "></h3>-->
+    <table th:if="${found}!=null and ${found.size()>0}" class="table table-hover">
+        <th>Garage</th>
+        <th>Owner</th>
+        <th>Work Performed</th>
+        <th>Date Performed</th>
+        <th>Price</th>
+        <tr th:each="service : ${found}">
+            <td th:text="${service.garage.UIC} + ': ' + ${service.garage.name} + ' -> ' + ${service.garage.address}"></td>
+            <td th:text="${service.client.firstName} + ' ' + ${service.client.lastName}"></td>
+            <td th:text="${service.qualification.qualificationName}"></td>
+            <td th:text="${service.dateOfService}"></td>
+            <td th:text="${service.price}"></td>
+        </tr>
+    </table>
+</div>
+
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>
