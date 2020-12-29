@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -23,6 +24,10 @@ public class CarModel implements Serializable {
 	@JoinColumn(name = "Car_Brand")
 //	@MapsId
 	private CarBrand carBrand;
+
+	@Column(name = "year")
+	@Positive
+	private Integer year;
 
 	@OneToMany(mappedBy = "model")
 	private Set<Car> cars;
