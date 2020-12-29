@@ -11,4 +11,5 @@ import lombok.Setter;
 public class CarModelDTO {
     private String carModel;
     private CarBrand carBrand;
+    private Integer year;
 }
