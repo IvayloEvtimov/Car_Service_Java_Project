@@ -86,6 +86,15 @@ public class CarServiceController {
 		return "/carServices/findByClient";
 	}
 
+	@GetMapping("/summary")
+	public String summary( Model model ) {
+		model.addAttribute("models", carServiceService.countCarBrands());
+		model.addAttribute("years", carServiceService.countCarYears());
+		model.addAttribute("qualifications", carServiceService.countQualifications());
+
+		return "/carServices/summary";
+	}
+
 
 	@GetMapping("/createCarService")
 	public String showCreateCarServiceForm( Model model ) {
