@@ -16,6 +16,8 @@ import org.springframework.validation.annotation.Validated;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
+import java.util.AbstractMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -81,6 +83,78 @@ public class CarServiceServiceImpl implements CarServiceService {
 	@Override
 	public List<PersonDTO> findAllClients() {
 		return carServiceRepository.findAllClients().stream().map(this::convertToPersonDTO).collect(Collectors.toList());
+	}
+
+	@Override
+	public Integer countAllByCar_Model_CarBrand_BrandName( String brand ) {
+		return carServiceRepository.countAllByCar_Model_CarBrand_BrandName(brand);
+	}
+
+	@Override
+	public Integer countAllByCar_Model_Year( Integer year ) {
+		return carServiceRepository.countAllByCar_Model_Year(year);
+	}
+
+	@Override
+	public Integer countAllByQualification_QualificationName( String name ) {
+		return carServiceRepository.countAllByQualification_QualificationName(name);
+	}
+
+	@Override
+	public List<String> findAllBrands() {
+		return carServiceRepository.findAllBrands();
+	}
+
+	@Override
+	public List<Integer> findAllCarYears() {
+		return carServiceRepository.findAllCarYears();
+	}
+
+	@Override
+	public List<String> findAllQualifications() {
+		return carServiceRepository.findAllQualifications();
+	}
+
+	@Override
+	public HashSet<AbstractMap.SimpleEntry<String, Integer>> countCarBrands() {
+		List<String> brands = findAllBrands();
+
+		HashSet<AbstractMap.SimpleEntry<String, Integer>> hashSet = new HashSet<>();
+
+		for (String brand : brands) {
+			AbstractMap.SimpleEntry<String, Integer> entry = new AbstractMap.SimpleEntry<>(brand, countAllByCar_Model_CarBrand_BrandName(brand));
+
+			hashSet.add(entry);
+		}
+
+		return hashSet;
+	}
+
+	@Override
+	public HashSet<AbstractMap.SimpleEntry<Integer, Integer>> countCarYears() {
+		List<Integer> carYears = findAllCarYears();
+
+		HashSet<AbstractMap.SimpleEntry<Integer, Integer>> hashSet = new HashSet<>();
+
+		for (Integer year : carYears) {
+			AbstractMap.SimpleEntry<Integer, Integer> entry = new AbstractMap.SimpleEntry<>(year, countAllByCar_Model_Year(year));
+			hashSet.add(entry);
+		}
+
+		return hashSet;
+	}
+
+	@Override
+	public HashSet<AbstractMap.SimpleEntry<String, Integer>> countQualifications() {
+		List<String> qualificationList = findAllQualifications();
+		HashSet<AbstractMap.SimpleEntry<String, Integer>> hashSet = new HashSet<>();
+
+		for (String qualification : qualificationList) {
+			AbstractMap.SimpleEntry<String, Integer> entry = new AbstractMap.SimpleEntry<>(qualification, countAllByQualification_QualificationName(qualification));
+			hashSet.add(entry);
+		}
+
+		return hashSet;
 	}
 
 	private CarServiceDTO convertToCarServiceDTO( CarService carService ) {
