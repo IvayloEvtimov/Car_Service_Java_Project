@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments :: head"></head>
 <body>
 <header th:replace="fragments :: header"></header>
@@ -17,7 +17,7 @@
         <th>Date of Service</th>
         <th>Price</th>
         <th>Edit</th>
-        <th>Delete</th>
+        <th sec:authorize="hasAuthority('ADMIN')">Delete</th>
         <tr th:each="service : ${carServices}">
             <td th:text="${service.serviceId}"></td>
             <td th:text="${service.garage.name}"></td>
@@ -29,7 +29,7 @@
             <td th:text="${service.dateOfService}"></td>
             <td th:text="${service.price}"></td>
             <td><a class="btn btn-info" th:href="@{'/carServices/editCarService/'+${service.serviceId}}">Edit</a></td>
-            <td><a class="btn btn-danger" th:href="@{'/carServices/delete/'+${service.serviceId}}">Delete</a></td>
+            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{'/carServices/delete/'+${service.serviceId}}">Delete</a></td>
         </tr>
     </table>
 </div>
