@@ -7,7 +7,7 @@ import com.project.car_service.dto.CreateCarServiceDTO;
 import com.project.car_service.dto.PersonDTO;
 import com.project.car_service.dto.UpdateCarServiceDTO;
 import com.project.car_service.exceptions.CarServiceNotFoundException;
-import com.project.car_service.repository.CarServiceRepository;
+import com.project.car_service.data.repository.CarServiceRepository;
 import com.project.car_service.services.CarServiceService;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;

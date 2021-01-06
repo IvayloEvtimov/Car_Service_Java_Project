@@ -1,4 +1,4 @@
-package com.project.car_service.repository;
+package com.project.car_service.data.repository;
 
 import com.project.car_service.data.entity.Car;
 import com.project.car_service.data.entity.CarService;
