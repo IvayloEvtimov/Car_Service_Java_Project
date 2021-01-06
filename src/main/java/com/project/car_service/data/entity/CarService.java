@@ -36,10 +36,6 @@ public class CarService {
 	private Car car;
 
 	@ManyToOne()
-	@JoinColumn(name = "Car_Part")
-	private CarPart carPart;
-
-	@ManyToOne()
 	@JoinColumn(name =  "qualification")
 	private Qualification qualification;
 
