@@ -26,8 +26,6 @@ public class CreateCarServiceViewModel {
 	@NotNull
 	private Car car;
 
-	@NotNull
-	private CarPart carPart;
 
 	@NotNull
 	private Qualification qualification;

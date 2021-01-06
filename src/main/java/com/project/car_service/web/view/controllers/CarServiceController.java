@@ -27,7 +27,6 @@ public class CarServiceController {
 	private final EmploymentService employmentService;
 	private final PersonService personService;
 	private final CarService carService;
-	private final CarPartService carPartService;
 	private final QualificationService qualificationService;
 	private final WorkBrandService workBrandService;
 	private final ModelMapper modelMapper;
@@ -102,7 +101,6 @@ public class CarServiceController {
 		model.addAttribute("employees", employmentService.getEmployees());
 		model.addAttribute("clients", personService.getPersons());
 		model.addAttribute("cars", carService.getCars());
-		model.addAttribute("carParts", carPartService.getCarParts());
 		model.addAttribute("qualifications", qualificationService.getQualifications());
 		model.addAttribute("carService", new CreateCarServiceViewModel());
 		return "/carServices/createCarService";
@@ -125,7 +123,6 @@ public class CarServiceController {
 		model.addAttribute("employees", employmentService.getEmployees());
 		model.addAttribute("clients", personService.getPersons());
 		model.addAttribute("cars", carService.getCars());
-		model.addAttribute("carParts", carPartService.getCarParts());
 		model.addAttribute("qualifications", qualificationService.getQualifications());
 		model.addAttribute("carService", modelMapper.map(carServiceService.getService(serviceId), UpdateCarServiceViewModel.class));
 		return "/carServices/editCarService";

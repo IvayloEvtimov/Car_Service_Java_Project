@@ -31,8 +31,7 @@ public class UpdateCarServiceViewModel {
 	@NotBlank
 	private Car car;
 
-	@NotBlank
-	private CarPart carPart;
+
 
 	@NotBlank
 	private Qualification qualification;

@@ -17,7 +17,6 @@ public class UpdateCarServiceDTO {
 	private Person employee;
 	private Person client;
 	private Car car;
-	private CarPart carPart;
 	private Qualification qualification;
 	private Date date;
 }

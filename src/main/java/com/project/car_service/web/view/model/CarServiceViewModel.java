@@ -16,7 +16,6 @@ public class CarServiceViewModel {
 	private Person employee;
 	private Person client;
 	private Car car;
-	private CarPart carPart;
 	private Qualification qualification;
 	private Date dateOfService;
 	private Integer price;
