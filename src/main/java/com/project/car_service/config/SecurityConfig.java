@@ -1,4 +1,4 @@
-package com.informatics.cscb869f2020week8.config;
+package com.project.car_service.config;
 
 import com.project.car_service.services.UserService;
 import lombok.AllArgsConstructor;
