@@ -20,7 +20,7 @@ public class WorkBrandRepositoryTest {
 	private WorkBrandRepository workBrandRepository;
 
 	@Test
-	public void getWorkBrandByCarBrand_BrandNameAndGarage_UIC(){
+	public void getWorkBrandByCarBrand_BrandNameAndGarage_UIC() {
 		String brandName = "Brand_Test";
 		CarBrand carBrand = new CarBrand();
 		carBrand.setBrandName(brandName);
@@ -38,6 +38,72 @@ public class WorkBrandRepositoryTest {
 		workBrand.setCarBrand(carBrand);
 		testEntityManager.persistAndFlush(workBrand);
 
-		assertThat(workBrandRepository.getWorkBrandByCarBrand_BrandNameAndGarage_UIC(brandName,UIC)).isNotEqualTo(null);
+		assertThat(workBrandRepository.getWorkBrandByCarBrand_BrandNameAndGarage_UIC(brandName, UIC)).isNotEqualTo(null);
+	}
+
+	@Test
+	public void getWorkBrandByWrongCarBrand_BrandNameAndGarage_UIC() {
+		String brandName = "Brand_Test";
+		CarBrand carBrand = new CarBrand();
+		carBrand.setBrandName(brandName);
+		testEntityManager.persistAndFlush(carBrand);
+
+		String UIC = "654312897";
+		Garage garage = new Garage();
+		garage.setUIC(UIC);
+		garage.setName("Test_Garage");
+		garage.setAddress("Test_address");
+		testEntityManager.persistAndFlush(garage);
+
+		WorkBrand workBrand = new WorkBrand();
+		workBrand.setGarage(garage);
+		workBrand.setCarBrand(carBrand);
+		testEntityManager.persistAndFlush(workBrand);
+
+		assertThat(workBrandRepository.getWorkBrandByCarBrand_BrandNameAndGarage_UIC("Test", UIC)).isEqualTo(null);
+	}
+
+	@Test
+	public void getWorkBrandByCarBrand_BrandNameAndWrongGarage_UIC() {
+		String brandName = "Brand_Test";
+		CarBrand carBrand = new CarBrand();
+		carBrand.setBrandName(brandName);
+		testEntityManager.persistAndFlush(carBrand);
+
+		String UIC = "654312897";
+		Garage garage = new Garage();
+		garage.setUIC(UIC);
+		garage.setName("Test_Garage");
+		garage.setAddress("Test_address");
+		testEntityManager.persistAndFlush(garage);
+
+		WorkBrand workBrand = new WorkBrand();
+		workBrand.setGarage(garage);
+		workBrand.setCarBrand(carBrand);
+		testEntityManager.persistAndFlush(workBrand);
+
+		assertThat(workBrandRepository.getWorkBrandByCarBrand_BrandNameAndGarage_UIC(brandName, "123456778")).isEqualTo(null);
+	}
+
+	@Test
+	public void getWorkBrandByWrongCarBrand_BrandNameAndWrongGarage_UIC() {
+		String brandName = "Brand_Test";
+		CarBrand carBrand = new CarBrand();
+		carBrand.setBrandName(brandName);
+		testEntityManager.persistAndFlush(carBrand);
+
+		String UIC = "654312897";
+		Garage garage = new Garage();
+		garage.setUIC(UIC);
+		garage.setName("Test_Garage");
+		garage.setAddress("Test_address");
+		testEntityManager.persistAndFlush(garage);
+
+		WorkBrand workBrand = new WorkBrand();
+		workBrand.setGarage(garage);
+		workBrand.setCarBrand(carBrand);
+		testEntityManager.persistAndFlush(workBrand);
+
+		assertThat(workBrandRepository.getWorkBrandByCarBrand_BrandNameAndGarage_UIC("Test", "1234567")).isEqualTo(null);
 	}
 }
