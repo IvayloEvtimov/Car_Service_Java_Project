@@ -15,7 +15,7 @@ import java.util.Date;
 public class CarService {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "service_id")
 	private Long serviceID;
 
