@@ -25,7 +25,8 @@ public class EmploymentRepositoryTest {
 	@Test
 	void findEmploymentByEmployee_PIDAndGarage_UIC() {
 		String PID = "1234567";
-		LocalDate localdate = LocalDate.parse("1990-1-1");
+		LocalDate localdate = LocalDate.parse("1990-01-01");
+
 		Person employee = new Person();
 		employee.setPID(PID);
 		employee.setFirstName("First_Test1");
@@ -44,7 +45,7 @@ public class EmploymentRepositoryTest {
 		qualification.setQualificationName("Test_Qualification");
 		testEntityManager.persistAndFlush(qualification);
 
-		LocalDate dateOfHire = LocalDate.parse("2020-1-1");
+		LocalDate dateOfHire = LocalDate.parse("2020-01-01");
 		Employment employment = new Employment();
 		employment.setGarage(garage);
 		employment.setEmployee(employee);
@@ -53,36 +54,13 @@ public class EmploymentRepositoryTest {
 		employment.setSalary(1234);
 		testEntityManager.persistAndFlush(employment);
 
-
-		Person employee2 = new Person();
-		employee2.setPID(PID);
-		employee2.setFirstName("First_Test1");
-		employee2.setLastName("Last_Test1");
-		employee2.setDateOfBirth(localdate);
-		testEntityManager.persistAndFlush(employee);
-
-		Garage garage2 = new Garage();
-		garage2.setUIC(UIC);
-		garage2.setName("Test_Garage");
-		garage2.setAddress("Test_address");
-		testEntityManager.persistAndFlush(garage);
-
-		Employment employment2 = new Employment();
-		employment2.setGarage(garage);
-		employment2.setEmployee(employee);
-		employment2.setDateOfHire(dateOfHire);
-		employment2.setQualification(qualification);
-		employment2.setSalary(1234);
-		testEntityManager.persistAndFlush(employment);
-
-
-		assertThat(employmentRepository.findEmploymentByEmployee_PIDAndGarage_UIC(PID, UIC).size()).isEqualTo(2);
+		assertThat(employmentRepository.findEmploymentByEmployee_PIDAndGarage_UIC(PID, UIC).size()).isEqualTo(1);
 	}
 
 	@Test
 	void findEmploymentByWrongEmployee_PIDAndGarage_UIC() {
 		String PID = "1234567";
-		LocalDate localdate = LocalDate.parse("1990-1-1");
+		LocalDate localdate = LocalDate.parse("1990-01-01");
 		Person employee = new Person();
 		employee.setPID(PID);
 		employee.setFirstName("First_Test1");
@@ -101,7 +79,7 @@ public class EmploymentRepositoryTest {
 		qualification.setQualificationName("Test_Qualification");
 		testEntityManager.persistAndFlush(qualification);
 
-		LocalDate dateOfHire = LocalDate.parse("2020-1-1");
+		LocalDate dateOfHire = LocalDate.parse("2020-01-01");
 		Employment employment = new Employment();
 		employment.setGarage(garage);
 		employment.setEmployee(employee);
@@ -117,7 +95,7 @@ public class EmploymentRepositoryTest {
 	@Test
 	void findEmploymentByEmployee_PIDAndWrongGarage_UIC(){
 		String PID = "1234567";
-		LocalDate localdate = LocalDate.parse("1990-1-1");
+		LocalDate localdate = LocalDate.parse("1990-01-01");
 		Person employee = new Person();
 		employee.setPID(PID);
 		employee.setFirstName("First_Test1");
@@ -136,7 +114,7 @@ public class EmploymentRepositoryTest {
 		qualification.setQualificationName("Test_Qualification");
 		testEntityManager.persistAndFlush(qualification);
 
-		LocalDate dateOfHire = LocalDate.parse("2020-1-1");
+		LocalDate dateOfHire = LocalDate.parse("2020-01-01");
 		Employment employment = new Employment();
 		employment.setGarage(garage);
 		employment.setEmployee(employee);
@@ -152,7 +130,7 @@ public class EmploymentRepositoryTest {
 	@Test
 	void findEmploymentByWrongEmployee_PIDAndWrongGarage_UIC(){
 		String PID = "1234567";
-		LocalDate localdate = LocalDate.parse("1990-1-1");
+		LocalDate localdate = LocalDate.parse("1990-01-01");
 		Person employee = new Person();
 		employee.setPID(PID);
 		employee.setFirstName("First_Test1");
@@ -171,7 +149,7 @@ public class EmploymentRepositoryTest {
 		qualification.setQualificationName("Test_Qualification");
 		testEntityManager.persistAndFlush(qualification);
 
-		LocalDate dateOfHire = LocalDate.parse("2020-1-1");
+		LocalDate dateOfHire = LocalDate.parse("2020-01-01");
 		Employment employment = new Employment();
 		employment.setGarage(garage);
 		employment.setEmployee(employee);
@@ -188,7 +166,7 @@ public class EmploymentRepositoryTest {
 	@Test
 	void getEmploymentByEmployee_PIDAndQualification() {
 		String PID = "1234567";
-		LocalDate localdate = LocalDate.parse("1990-1-1");
+		LocalDate localdate = LocalDate.parse("1990-01-01");
 		Person employee = new Person();
 		employee.setPID(PID);
 		employee.setFirstName("First_Test1");
@@ -207,7 +185,7 @@ public class EmploymentRepositoryTest {
 		garage.setAddress("Test_address");
 		testEntityManager.persistAndFlush(garage);
 
-		LocalDate dateOfHire = LocalDate.parse("2020-1-1");
+		LocalDate dateOfHire = LocalDate.parse("2020-01-01");
 		Employment employment = new Employment();
 		employment.setGarage(garage);
 		employment.setEmployee(employee);
