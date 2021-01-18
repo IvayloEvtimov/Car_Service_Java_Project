@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head">
 </head>
 <body>
-<h1 th:text="'Hello and  ' + ${welcome}"></h1>
+<h1 class="d-flex justify-content-center" th:text="${welcome}"></h1>
 <div class="container col-6">
     <form name="login" th:action="@{/login}" method="post">
         <fieldset>
