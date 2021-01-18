@@ -2,13 +2,17 @@ package com.project.car_service.services.implementations;
 
 import com.project.car_service.data.entity.Person;
 import com.project.car_service.data.repository.PersonRepository;
+import com.project.car_service.dto.CreatePersonDTO;
 import com.project.car_service.dto.PersonDTO;
+import com.project.car_service.dto.UpdatePersonDTO;
 import com.project.car_service.services.PersonService;
+import com.project.car_service.web.view.model.CreatePersonViewModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +29,21 @@ public class PersonServiceImpl implements PersonService {
 		return personRepository.findAll().stream()
 				.map(this::convertToDTO)
 				.collect(Collectors.toList());
+	}
+
+	@Override
+	public Person createPerson( @Valid CreatePersonDTO createPersonDTO ) {
+		return personRepository.save( modelMapper.map( createPersonDTO, Person.class ) );
+	}
+
+	@Override
+	public Person updatePerson( String PID, UpdatePersonDTO updatePersonDTO ) {
+		return personRepository.save( modelMapper.map( updatePersonDTO, Person.class ) );
+	}
+
+	@Override
+	public void deletePerson( String PID ) {
+		personRepository.deleteById( PID );
 	}
 
 	private PersonDTO convertToDTO( Person person ) {
