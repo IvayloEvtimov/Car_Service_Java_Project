@@ -4,7 +4,6 @@ import com.project.car_service.data.entity.Person;
 import com.project.car_service.dto.CreatePersonDTO;
 import com.project.car_service.dto.PersonDTO;
 import com.project.car_service.dto.UpdatePersonDTO;
-import com.project.car_service.web.view.model.CreatePersonViewModel;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -17,4 +16,6 @@ public interface PersonService {
 	Person updatePerson( String PID, UpdatePersonDTO updatePersonDTO );
 
 	void deletePerson( String PID );
+
+	PersonDTO findPersonByPID( String PID );
 }
