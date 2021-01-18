@@ -28,8 +28,6 @@ public interface CarServiceService {
 
 	List<CarServiceDTO> findCarServicesByEmployee_PID( String PID );
 
-//	List<PersonDTO> findCarServicesByCar_LicensePlateAndEmployee_PID( String licensePlate, String PID);
-
 	List<CarServiceDTO> findCarServicesByClient_PID( String PID );
 
 	List<PersonDTO> findAllClients();
