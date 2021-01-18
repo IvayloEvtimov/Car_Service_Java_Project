@@ -5,6 +5,7 @@ import com.project.car_service.data.repository.PersonRepository;
 import com.project.car_service.dto.CreatePersonDTO;
 import com.project.car_service.dto.PersonDTO;
 import com.project.car_service.dto.UpdatePersonDTO;
+import com.project.car_service.exceptions.PersonNotFoundException;
 import com.project.car_service.services.PersonService;
 import com.project.car_service.web.view.model.CreatePersonViewModel;
 import lombok.AllArgsConstructor;
@@ -44,6 +45,12 @@ public class PersonServiceImpl implements PersonService {
 	@Override
 	public void deletePerson( String PID ) {
 		personRepository.deleteById( PID );
+	}
+
+	@Override
+	public PersonDTO findPersonByPID( String PID ) {
+		return modelMapper.map( personRepository.findById( PID )
+		.orElseThrow(() -> new PersonNotFoundException( "Invalid Person PID: " + PID ) ), PersonDTO.class);
 	}
 
 	private PersonDTO convertToDTO( Person person ) {
