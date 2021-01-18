@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4>Registered People in the System:</h4>
+<div class="col-6" sec:authorize="hasAuthority('ADMIN')">
+    <h3 th:unless="${persons} and ${persons.size()}">There are no persons!</h3>
+    <table th:if="${persons.size()>0}" class="table table-hover">
+        <th>PID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Burth</th>
+        <th sec:authorize="hasAuthority('ADMIN')">Edit</th>
+        <th sec:authorize="hasAuthority('ADMIN')">Delete</th>
+        <tr th:each="person : ${persons}">
+            <td th:text="${person.PID}"></td>
+            <td th:text="${person.firstName}"></td>
+            <td th:text="${person.lastName}"></td>
+            <td th:text="${person.dateOfBirth}"></td>
+            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-info" th:href="@{'/person/editPerson/'+${person.PID}}">Edit</a></td>
+            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{'/person/delete/'+${person.PID}}">Delete</a></td>
+        </tr>
+    </table>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>
