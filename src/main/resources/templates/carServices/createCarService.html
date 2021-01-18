@@ -3,7 +3,6 @@
 <head th:replace="fragments :: head"></head>
 <body>
 <header th:replace="fragments :: header"></header>
-<h4>Register new Car Service</h4>
 <div class="col-6">
     <form action="#" th:action="@{/carServices/create/}" th:object="${carService}" method="post">
 
@@ -40,15 +39,6 @@
                 <option value="">Select Car</option>
                 <option th:each="car : ${cars}" th:value="${car.licensePlate}"
                         th:text="${car.licensePlate} + ' : ' + ${car.model.carBrand.brandName} + ' ' + ${car.model.carModel} + ' -> ' + ${car.owner.firstName} + ' ' + ${car.owner.lastName} "></option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="carPart">Car Part</label>
-            <select class="form-control" th:field="${carService.carPart}" id="carPart">
-                <option value="">Select Car Part</option>
-                <option th:each="carPart : ${carParts}" th:value="${carPart.partName}"
-                        th:text="${carPart.partName}"></option>
             </select>
         </div>
 
