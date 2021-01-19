@@ -16,8 +16,8 @@
             <td th:text="${garage.UIC}"></td>
             <td th:text="${garage.name}"></td>
             <td th:text="${garage.address}"></td>
-            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-info" th:href="@{'/garage/editGarage/'+${garage.UIC}}">Edit</a></td>
-            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{'/garage/garage/'+${garage.UIC}}">Delete</a></td>
+            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-info" th:href="@{'/garages/editGarage/'+${garage.UIC}}">Edit</a></td>
+            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{'/garages/garage/'+${garage.UIC}}">Delete</a></td>
         </tr>
     </table>
 </div>
