@@ -6,7 +6,6 @@ import com.project.car_service.dto.UpdatePersonDTO;
 import com.project.car_service.services.PersonService;
 import com.project.car_service.web.view.model.CreatePersonViewModel;
 import com.project.car_service.web.view.model.PersonViewModel;
-import com.project.car_service.web.view.model.UpdateCarServiceViewModel;
 import com.project.car_service.web.view.model.UpdatePersonViewModel;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -30,7 +29,7 @@ public class PersonController {
 	public String getPersons(Model model) {
 		final List<PersonViewModel> personViewModels = personService.getPersons()
 				.stream()
-				.map(this::convertToCarServiceViewModel)
+				.map(this::convertToPersonViewModel)
 				.collect(Collectors.toList());
 
 		model.addAttribute("persons", personViewModels);
@@ -56,7 +55,7 @@ public class PersonController {
 
 	@GetMapping("/editPerson/{id}")
 	public String showEditCarServiceForm(Model model, @PathVariable("id") String PID) {
-		model.addAttribute("person", modelMapper.map(personService.findPersonByPID(PID), UpdateCarServiceViewModel.class));
+		model.addAttribute("person", modelMapper.map(personService.findPersonByPID(PID), UpdatePersonViewModel.class));
 		return "/persons/editPerson";
 	}
 
@@ -77,7 +76,7 @@ public class PersonController {
 	}
 
 
-	private PersonViewModel convertToCarServiceViewModel(PersonDTO personDTO) {
+	private PersonViewModel convertToPersonViewModel(PersonDTO personDTO) {
 		return modelMapper.map(personDTO, PersonViewModel.class);
 	}
 }
