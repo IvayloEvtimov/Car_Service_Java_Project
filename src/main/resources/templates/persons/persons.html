@@ -18,8 +18,8 @@
             <td th:text="${person.firstName}"></td>
             <td th:text="${person.lastName}"></td>
             <td th:text="${person.dateOfBirth}"></td>
-            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-info" th:href="@{'/person/editPerson/'+${person.PID}}">Edit</a></td>
-            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{'/person/delete/'+${person.PID}}">Delete</a></td>
+            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-info" th:href="@{'/persons/editPerson/'+${person.PID}}">Edit</a></td>
+            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{'/persons/delete/'+${person.PID}}">Delete</a></td>
         </tr>
     </table>
 </div>
