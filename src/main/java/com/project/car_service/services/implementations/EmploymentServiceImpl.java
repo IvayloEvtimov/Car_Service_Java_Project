@@ -36,6 +36,11 @@ public class EmploymentServiceImpl implements EmploymentService {
 	}
 
 	@Override
+	public List<EmploymentDTO> findEmploymentByGarageUIC(String UIC) {
+		return employmentRepository.findAllByGarage_UIC(UIC).stream().map(this::convertToEmploymentDTO).collect(Collectors.toList());
+	}
+
+	@Override
 	public Employment getEmploymentByEmployee_PIDAndQualification( String PID, Qualification qualification ) {
 		return employmentRepository.getEmploymentByEmployee_PIDAndQualification(PID, qualification);
 	}
