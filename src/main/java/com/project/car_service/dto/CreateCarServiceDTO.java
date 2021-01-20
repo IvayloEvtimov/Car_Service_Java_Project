@@ -32,8 +32,8 @@ public class CreateCarServiceDTO {
 	private Qualification qualification;
 
 	@NotNull
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@Future(message = "Date has to be in the future")
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
+	@Future(message = "Date must be in the future")
 	private Date dateOfService;
 
 	private Integer price;
