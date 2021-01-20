@@ -1,5 +1,6 @@
 package com.project.car_service.web.view.controllers;
 
+import com.project.car_service.data.entity.Person;
 import com.project.car_service.dto.CarDTO;
 import com.project.car_service.dto.CreatePersonDTO;
 import com.project.car_service.dto.PersonDTO;
@@ -63,13 +64,15 @@ public class PersonController {
 		return "/persons/editPerson";
 	}
 
-	@PostMapping("/update/{id}")
+	@PostMapping("/editPerson/{id}")
 	public String updatePerson(@PathVariable("id") String PID, @Valid @ModelAttribute("person") UpdatePersonViewModel updatePersonViewModel, BindingResult bindingResult) {
 		if ( bindingResult.hasErrors() ) {
 			return "/persons/editPerson";
 		}
 
-		personService.updatePerson(PID, modelMapper.map(updatePersonViewModel, UpdatePersonDTO.class));
+		updatePersonViewModel.setPID(PID);
+		UpdatePersonDTO person = modelMapper.map(updatePersonViewModel, UpdatePersonDTO.class);
+		personService.updatePerson(PID, person);
 		return "redirect:/persons";
 	}
 
