@@ -10,14 +10,16 @@
         <th>UIC</th>
         <th>Name</th>
         <th>Address</th>
+        <th>Employment Records</th>
         <th sec:authorize="hasAuthority('ADMIN')">Edit</th>
         <th sec:authorize="hasAuthority('ADMIN')">Delete</th>
         <tr th:each="garage : ${garages}">
             <td th:text="${garage.UIC}"></td>
             <td th:text="${garage.name}"></td>
             <td th:text="${garage.address}"></td>
-            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-info" th:href="@{'/garages/editGarage/'+${garage.UIC}}">Edit</a></td>
-            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{'/garages/garage/'+${garage.UIC}}">Delete</a></td>
+            <td><a class="btn btn-info" th:href="@{'/garages/employmentRecord/' + ${garage.UIC}}">Employment Records</a> </td>
+            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-info" th:href="@{'/garages/editGarage/'+ ${garage.UIC}}">Edit</a></td>
+            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{'/garages/garage/'+ ${garage.UIC}}">Delete</a></td>
         </tr>
     </table>
 </div>
