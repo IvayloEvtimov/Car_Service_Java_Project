@@ -64,7 +64,7 @@ and open the template in the editor.
                 </li>
                 <li class="nav-fill">
 
-                <li class="nav-fill">
+                <li class="nav-fill" sec:authorize="hasAuthority('ADMIN')">
                     <a class="nav-link" data-fancybox data-animation-duration="700" data-src="#Person"
                        href="javascript:;">Persons</a>
 
@@ -80,7 +80,7 @@ and open the template in the editor.
                     </div>
                 </li>
 
-                <li class="nav-fill">
+                <li class="nav-fill" sec:authorize="hasAuthority('ADMIN')">
                     <a class="nav-link" data-fancybox data-animation-duration="700" data-src="#Garage"
                        href="javascript:;">Garages</a>
 
