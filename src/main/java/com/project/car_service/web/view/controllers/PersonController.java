@@ -1,9 +1,12 @@
 package com.project.car_service.web.view.controllers;
 
+import com.project.car_service.dto.CarDTO;
 import com.project.car_service.dto.CreatePersonDTO;
 import com.project.car_service.dto.PersonDTO;
 import com.project.car_service.dto.UpdatePersonDTO;
+import com.project.car_service.services.CarService;
 import com.project.car_service.services.PersonService;
+import com.project.car_service.web.view.model.CarViewModel;
 import com.project.car_service.web.view.model.CreatePersonViewModel;
 import com.project.car_service.web.view.model.PersonViewModel;
 import com.project.car_service.web.view.model.UpdatePersonViewModel;
@@ -23,6 +26,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/persons")
 public class PersonController {
 	private final PersonService personService;
+	private final CarService carService;
 	private final ModelMapper modelMapper;
 
 	@GetMapping
@@ -75,8 +79,21 @@ public class PersonController {
 		return "redirect:/persons";
 	}
 
+	@GetMapping("/ownedCars/{id}")
+	public String ownedCars(@PathVariable("id") String PID, Model model) {
+		List<CarViewModel> carViewModels = carService.findAllByOwner_PID(PID)
+				.stream().map(this::convertToCarViewModel).collect(Collectors.toList());
+
+		model.addAttribute("cars", carViewModels);
+		return "/persons/ownedCars";
+	}
+
 
 	private PersonViewModel convertToPersonViewModel(PersonDTO personDTO) {
 		return modelMapper.map(personDTO, PersonViewModel.class);
+	}
+
+	private CarViewModel convertToCarViewModel(CarDTO carDTO) {
+		return modelMapper.map(carDTO, CarViewModel.class);
 	}
 }
