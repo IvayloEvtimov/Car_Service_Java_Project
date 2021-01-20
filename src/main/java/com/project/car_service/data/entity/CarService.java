@@ -3,8 +3,10 @@ package com.project.car_service.data.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Future;
 import java.util.Date;
 
 @Getter
@@ -40,6 +42,8 @@ public class CarService {
 	private Qualification qualification;
 
 	@Column(name = "date_of_service")
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
+	@Future(message = "Date must be in the future")
 	private Date dateOfService;
 
 	@Column(name = "price")
