@@ -6,7 +6,7 @@
 
 <h4>Edit Existing Car Service</h4>
 <div class="col-6">
-    <form action="#" th:action="@{persons/editPerson.html}" th:object="${person}" method="post">
+    <form action="#" th:action="@{{id}(id=${id})}" th:object="${person}" method="post">
 
         <div class="form-group">
             <label for="firstName">First Name</label>
@@ -22,7 +22,7 @@
 
         <div class="form-group">
             <label for="dateOfBirth">Date Of Birth</label>
-            <input class="form-control" type="date" th:field="${person.dateOfBirth}" th:value="${person.dateOfBirth}" id="dateOfBirth">
+            <input class="form-control" type="date" th:field="${person.dateOfBirth}" id="dateOfBirth">
             <span class="text-danger" th:if="${#fields.hasErrors('dateOfBirth')}"
                   th:errors="${person.dateOfirth}">Birth Date Error</span>
         </div>
