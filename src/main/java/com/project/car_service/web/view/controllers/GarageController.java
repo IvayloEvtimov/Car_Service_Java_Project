@@ -1,6 +1,7 @@
 package com.project.car_service.web.view.controllers;
 
 import com.project.car_service.dto.*;
+import com.project.car_service.services.EmploymentService;
 import com.project.car_service.services.GarageService;
 import com.project.car_service.web.view.model.*;
 import lombok.AllArgsConstructor;
@@ -19,6 +20,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/garages")
 public class GarageController {
 	private final GarageService garageService;
+	private final EmploymentService employmentService;
 	private final ModelMapper modelMapper;
 
 	@GetMapping
@@ -69,8 +71,21 @@ public class GarageController {
 		return "redirect:/garages";
 	}
 
+	@GetMapping("/employmentRecord/{id}")
+	public String showEmploymentByGarage(Model model, @PathVariable("id") String UIC) {
+		final List<EmploymentViewModel> employmentViewModels = employmentService.findEmploymentByGarageUIC(UIC)
+				.stream().map(this::convertToEmploymentViewModel).collect(Collectors.toList());
+
+		model.addAttribute("employments", employmentViewModels);
+		return "/garages/employmentRecord";
+	}
+
 
 	private GarageViewModel convertToGarageViewModel(GarageDTO garageDTO) {
 		return modelMapper.map(garageDTO, GarageViewModel.class);
+	}
+
+	private EmploymentViewModel convertToEmploymentViewModel(EmploymentDTO employmentDTO) {
+		return modelMapper.map(employmentDTO, EmploymentViewModel.class);
 	}
 }
