@@ -6,7 +6,7 @@
 
 <h4>Edit Existing Car Service</h4>
 <div class="col-6">
-    <form action="#" th:action="@{garages/editGarage.html}" th:object="${garage}" method="post">
+    <form action="#" th:action="@{{id}(id=${id})}" th:object="${garage}" method="post">
 
         <div class="form-group">
             <label for="name">Garage Name</label>
