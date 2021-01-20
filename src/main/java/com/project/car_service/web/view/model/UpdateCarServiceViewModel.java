@@ -19,25 +19,26 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 public class UpdateCarServiceViewModel {
-	@NotBlank
+//	@NotBlank
+	private Long serviceID;
+
+//	@NotBlank
 	private Garage garage;
 
-	@NotBlank
+//	@NotBlank
 	private Person employee;
 
-	@NotBlank
+//	@NotBlank
 	private Person client;
 
-	@NotBlank
+//	@NotBlank
 	private Car car;
 
-
-
-	@NotBlank
+//	@NotBlank
 	private Qualification qualification;
 
 	@NotNull
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
 	@Future(message = "Date must be in the future")
 	private Date dateOfService;
 
