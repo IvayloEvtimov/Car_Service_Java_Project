@@ -6,7 +6,7 @@
 
 <h4>Edit Existing Car Service</h4>
 <div class="col-6">
-    <form action="#" th:action="@{carServices/editCarService.html}" th:object="${carService}" method="post">
+    <form action="#" th:action="@{{id}(id=${id})}" th:object="${carService}" method="post">
 
         <div class="form-group">
             <label for="garage">Garage</label>
@@ -41,18 +41,9 @@
             <label for="car">Car</label>
             <select class="form-control" th:if="${cars.size()>0}" th:field="${carService.car}" id="car">
                 <option value=""
-                        th:text="${car.licensePlate} + ' : ' + ${car.model.carBrand.brandName} + ' ' + ${car.model.carModel} + ' -> ' + ${car.owner.firstName} + ' ' + ${car.owner.lastName} "></option>
+                        th:text="${carService.car.licensePlate} + ' : ' + ${carService.car.model.carBrand.brandName} + ' ' + ${carService.car.model.carModel} + ' -> ' + ${carService.car.owner.firstName} + ' ' + ${carService.car.owner.lastName} "></option>
                 <option th:each="car : ${cars}" th:value="${car.licensePlate}"
                         th:text="${car.licensePlate} + ' : ' + ${car.model.carBrand.brandName} + ' ' + ${car.model.carModel} + ' -> ' + ${car.owner.firstName} + ' ' + ${car.owner.lastName} "></option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label for="car">Car Part</label>
-            <select class="form-control" th:if="${carParts.size()>0}" th:field="${carService.carPart}" id="carPart">
-                <option value="" th:text="${carService.carPart.partName}"></option>
-                <option th:each="carPart : ${carParts}" th:value="${carPart.partName}"
-                        th:text="${carPart.partName}"></option>
             </select>
         </div>
 
@@ -68,7 +59,7 @@
 
         <div class="form-group">
             <label for="dateOfService">Date Of Service</label>
-            <input class="form-control" type="date" th:field="${carService.dateOfService}" id="dateOfService">
+            <input class="form-control" type="datetime-local" th:field="${carService.dateOfService}" id="dateOfService">
             <span class="text-danger" th:if="${#fields.hasErrors('dateOfService')}"
                   th:errors="${carService.dateOfService}">Service Date Error</span>
         </div>
