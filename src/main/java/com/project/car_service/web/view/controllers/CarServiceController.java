@@ -128,13 +128,13 @@ public class CarServiceController {
 		return "/carServices/editCarService";
 	}
 
-	@PostMapping("/update/{id}")
-	public String updateCarService( @PathVariable("id") Long serviceId, @Valid @ModelAttribute("carService") UpdateCarServiceViewModel carServiceViewModel,
-	                                BindingResult bindingResult ) {
+	@PostMapping("/editCarService/{id}")
+	public String updateCarService( @PathVariable("id") Long serviceId, @Valid @ModelAttribute("carService") UpdateCarServiceViewModel carServiceViewModel, BindingResult bindingResult ) {
 		if (bindingResult.hasErrors() || (! carServiceViewModel.check(employmentService, workBrandService))) {
 			return "/carServices/editCarService";
 		}
 
+		carServiceViewModel.setServiceID(serviceId);
 		carServiceService.updateService(serviceId, modelMapper.map(carServiceViewModel, UpdateCarServiceDTO.class));
 		return "redirect:/carServices";
 	}
