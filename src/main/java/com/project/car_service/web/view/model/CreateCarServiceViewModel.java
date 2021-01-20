@@ -31,7 +31,7 @@ public class CreateCarServiceViewModel {
 	private Qualification qualification;
 
 	@NotNull
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
 	@Future(message = "Date must be in the future")
 	private Date dateOfService;
 
