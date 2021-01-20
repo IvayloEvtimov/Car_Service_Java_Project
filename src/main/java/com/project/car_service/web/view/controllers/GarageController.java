@@ -55,12 +55,13 @@ public class GarageController {
 		return "/garages/editGarage";
 	}
 
-	@PostMapping("/update/{id}")
+	@PostMapping("/editGarage/{id}")
 	public String updateGarage(@PathVariable("id") String UIC, @Valid @ModelAttribute("garage") UpdateGarageViewModel updateGarageViewModel, BindingResult bindingResult) {
 		if(bindingResult.hasErrors()) {
 			return "/garages/editGarage";
 		}
 
+		updateGarageViewModel.setUIC(UIC);
 		garageService.updateGarage(UIC, modelMapper.map(updateGarageViewModel, UpdateGarageDTO.class));
 		return "redirect:/garages";
 	}
