@@ -54,9 +54,9 @@
 
         <div class="form-group">
             <label for="dateOfService">Date Of Service</label>
-            <input class="form-control" type="date" th:field="${carService.dateOfService}" id="dateOfService">
-            <span class="text-danger" th:if="${#fields.hasErrors('dateOfService')}"
-                  th:errors="${carService.dateOfService}">Service Date Error</span>
+            <input class="form-control" type="datetime-local" th:field="${carService.dateOfService}" id="dateOfService">
+<!--            <span class="text-danger" th:if="${#fields.hasErrors('dateOfService')}"-->
+<!--                  th:errors="${carService.dateOfService}">Service Date Error</span>-->
         </div>
 
         <div class="form-group">
