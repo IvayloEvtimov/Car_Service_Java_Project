@@ -32,6 +32,13 @@ public class CarServiceImpl implements CarService {
 				.collect(Collectors.toList());
 	}
 
+	@Override
+	public List<CarDTO> findAllByOwner_PID(String PID) {
+		return carRepository.findAllByOwner_PID(PID).stream()
+				.map(this::convertToCarDTO)
+				.collect(Collectors.toList());
+	}
+
 
 	private CarDTO convertToCarDTO( Car car ) {
 		return modelMapper.map(car, CarDTO.class);

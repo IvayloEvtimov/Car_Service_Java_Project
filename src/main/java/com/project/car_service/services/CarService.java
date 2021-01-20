@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CarService {
 	List<CarDTO> getCars();
+
+	List<CarDTO> findAllByOwner_PID(String PID);
 }
