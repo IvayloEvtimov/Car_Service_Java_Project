@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/carService")
+@RequestMapping("/api/carServices")
 @AllArgsConstructor
 public class CarServiceApiController {
 
@@ -43,6 +43,7 @@ public class CarServiceApiController {
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/{id}")
 	public CarService updateCarService( @PathVariable("id") Long serviceId, @RequestBody UpdateCarServiceViewModel carServiceViewModel ) {
+
 		return carServiceService.updateService(serviceId, modelMapper.map(carServiceViewModel, UpdateCarServiceDTO.class));
 	}
 
