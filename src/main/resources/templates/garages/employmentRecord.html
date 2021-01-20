@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4>Employment Records:</h4>
+<div class="col-6" sec:authorize="hasAuthority('ADMIN')">
+    <h3 th:unless="${employments} and ${employments.size()}">There are no records!</h3>
+    <table th:if="${employments.size()>0}" class="table table-hover">
+        <th>Employee</th>
+        <th>Date of Hire</th>
+        <th>Qualification</th>
+        <th>Salary</th>
+<!--        <th sec:authorize="hasAuthority('ADMIN')">Edit</th>-->
+<!--        <th sec:authorize="hasAuthority('ADMIN')">Delete</th>-->
+        <tr th:each="employment : ${employments}">
+            <td th:text="${employment.employee.firstName} + ' ' + ${employment.employee.lastName}"></td>
+            <td th:text="${employment.dateOfHire}"></td>
+            <td th:text="${employment.qualification.qualificationName}"></td>
+            <td th:text="${employment.salary}"></td>
+<!--            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-info" th:href="@{'/garages/editGarage/'+${garage.UIC}}">Edit</a></td>-->
+<!--            <td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{'/garages/garage/'+${garage.UIC}}">Delete</a></td>-->
+        </tr>
+    </table>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>
