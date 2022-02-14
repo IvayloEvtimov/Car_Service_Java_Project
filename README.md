@@ -1,4 +1,4 @@
-# Car_Service_Java_Project
+# Car Service Java Project
 Java Project for Java Web Services Course at NBU
 
 ## Overview
